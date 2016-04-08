@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gestor de Descargas</title>
+	<meta content="text/html" charset="utf-8" http-equiv="content/type">
+	<link rel="shortcut icon" href="images/favicon.png">
+	<link rel="stylesheet" type="text/css" href="css/media.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/functions.js"></script>
+</head>
+<body>
+	<div id="contenedor">
+		<div id="div_imagen">
+			<img src="images/Creative-Med3.gif">
+		</div>	
+		<div id="div_contenedor">
+			<div class="form_center">
+				<form action="Services/ServicesSelect.php" method="post">
+					<input type="text" id="inp_mailUsuario" name="inp_mailUsuario" placeholder="Usuario" autofocus value="">
+					<input type="password" id="inp_password" name="inp_password" placeholder="Contraseña" value="">
+					<input type="text" id="action" name="action" value="searchUser">
+					<button type="submit" class="btn_contenedor" id="btn_password">Ingresar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,620 @@
+@import url(animations.css);
+@font-face {    
+    font-family: futura;
+    src: url(../fonts/FuturaLight.ttf);
+}
+@font-face {
+    font-family: futuraBk;
+    src: url(../fonts/FuturaExtended.ttf);
+}
+a
+{
+	color: gray;
+	text-decoration: none;
+}
+b
+{
+	color: black;
+}
+html,body
+{
+	margin:0 auto;
+	top: 0;
+	left: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #eeeeee;
+}
+table
+{
+	margin:10px auto; 
+}
+th,tr
+{
+	padding:0px 20px;
+	border-bottom: 1px solid gray;
+}
+
+/*
+@media only screen and (min-device-width : 320px) and (max-device-width : 479px)
+{
+	#contenedor
+	{
+		width: 100%;
+		height: auto;
+		margin:0 auto;
+		overflow: hidden;
+	}
+	#div_imagen
+	{
+		display: block;
+		width: 100%;
+		height: 200px;
+		text-align: center;
+		background: white;
+		overflow: hidden;
+	}
+	#div_imagen img
+	{
+		width: auto;
+		height: auto;
+	}
+	#div_contenedor
+	{
+		height: auto;
+		margin: auto;
+		margin-top:12%;
+		font-family: futura;
+		text-align: center;
+	}
+	.inp_contenedor
+	{
+		display: block;
+		margin: 5% auto;
+		width: 80%;
+		color: black;
+		font-size: 55px;
+		border: none;
+		border-bottom: 1px solid black;
+		text-align: center;
+		outline: none;
+		font-family: futura;
+		height: 65px;
+	}
+	.btn_contenedor
+	{
+		display: block;
+		margin: 2% auto 5%;
+		width: auto;
+		padding: 10px 10%;
+		height: 80px;
+		background: #15C7F0;
+		border: none;
+		text-align: center;
+		outline: none;
+		font-family: futuraBk;
+		cursor: pointer;
+		color: white;
+		font-size: 50px;
+	}
+}
+
+@media only screen and (min-device-width : 480px) and (max-device-width : 599px)
+{
+	#contenedor
+	{
+		width: 100%;
+		height: auto;
+		margin:0 auto;
+		overflow: hidden; 
+	}
+	#div_imagen
+	{
+		display: block;
+		width: 100%;
+		height: 200px;
+		text-align: center;
+		background: white;
+		overflow: hidden;
+	}
+	#div_imagen img
+	{
+		width: auto;
+		height: auto;
+	}
+	#div_contenedor
+	{
+		height: auto;
+		margin: auto;
+		margin-top:12%;
+		font-family: futura;
+		text-align: center;
+	}
+	.inp_contenedor
+	{
+		display: block;
+		margin: 5% auto;
+		width: 80%;
+		color: black;
+		font-size: 55px;
+		border: none;
+		border-bottom: 1px solid black;
+		text-align: center;
+		outline: none;
+		font-family: futura;
+		height: 65px;
+	}
+	.btn_contenedor
+	{
+		display: block;
+		margin: 2% auto 5%;
+		width: auto;
+		padding: 10px 10%;
+		height: 80px;
+		background: #15C7F0;
+		border: none;
+		text-align: center;
+		outline: none;
+		font-family: futuraBk;
+		cursor: pointer;
+		color: white;
+		font-size: 50px;
+	}
+}
+
+@media only screen and (min-device-width : 600px) and (max-device-width : 767px)
+{
+	#contenedor
+	{
+		width: 100%;
+		height: auto;
+		margin:0 auto;
+		overflow: hidden; 
+	}
+	#div_imagen
+	{
+		display: block;
+		width: 100%;
+		height: 200px;
+		text-align: center;
+		background: white;
+		overflow: hidden;
+	}
+	#div_imagen img
+	{
+		width: auto;
+		height: auto;
+	}
+	#div_contenedor
+	{
+		height: auto;
+		margin: auto;
+		margin-top:12%;
+		font-family: futura;
+		text-align: center;
+	}
+	.inp_contenedor
+	{
+		display: block;
+		margin: 5% auto;
+		width: 70%;
+		color: black;
+		font-size: 55px;
+		border: none;
+		border-bottom: 1px solid black;
+		text-align: center;
+		outline: none;
+		font-family: futura;
+		height: auto;
+	}
+	.btn_contenedor
+	{
+		display: block;
+		margin: 2% auto 5%;
+		width: auto;
+		padding: 10px 10%;
+		height: 80px;
+		background: #15C7F0;
+		border: none;
+		text-align: center;
+		outline: none;
+		font-family: futuraBk;
+		cursor: pointer;
+		color: white;
+		font-size: 50px;
+	}
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1023px)
+{
+	#contenedor
+	{
+		width: 100%;
+		height: auto;
+		margin:0 auto;
+		overflow: hidden; 
+	}
+	#div_imagen
+	{
+		display: block;
+		width: 100%;
+		height: 200px;
+		text-align: center;
+		background: white;
+		overflow: hidden;
+	}
+	#div_imagen img
+	{
+		width: auto;
+		height: auto;
+	}
+	#div_contenedor
+	{
+		height: auto;
+		margin: auto;
+		margin-top:12%;
+		font-family: futura;
+		text-align: center;
+	}
+	.inp_contenedor
+	{
+		display: block;
+		margin: 5% auto;
+		width: 60%;
+		color: black;
+		font-size: 35px;
+		border: none;
+		border-bottom: 1px solid black;
+		text-align: center;
+		outline: none;
+		font-family: futura;
+		height: auto;
+	}
+	.btn_contenedor
+	{
+		display: block;
+		margin: 2% auto;
+		width: auto;
+		padding: 5px 10%;
+		height: auto;
+		background: #15C7F0;
+		border: none;
+		text-align: center;
+		outline: none;
+		font-family: futuraBk;
+		cursor: pointer;
+		color: white;
+		font-size: 25px;
+	}
+}
+
+@media only screen and (min-device-width : 1024px)
+{
+	#contenedor
+	{
+		width: 100%;
+		height: auto;
+		margin:0 auto;
+		overflow: hidden; 
+	}
+	#div_imagen
+	{
+		display: block;
+		width: 100%;
+		height: 120px;
+		text-align: center;
+		background: white;
+		overflow: hidden;
+	}
+	#div_imagen img
+	{
+		width: auto;
+		height: auto;
+	}
+	#div_contenedor
+	{
+		height: auto;
+		margin: auto;
+		margin-top:12%;
+		font-family: futura;
+		text-align: center;
+	}
+	.inp_contenedor
+	{
+		display: block;
+		margin: 5% auto;
+		width: 40%;
+		color: black;
+		font-size: 35px;
+		border: none;
+		border-bottom: 1px solid black;
+		text-align: center;
+		outline: none;
+		font-family: futura;
+		height: auto;
+	}
+	.btn_contenedor
+	{
+		display: block;
+		margin: 5% auto;
+		width: auto;
+		padding: 20px 10%;
+		height: auto;
+		background: #15C7F0;
+		border: none;
+		text-align: center;
+		outline: none;
+		font-family: futuraBk;
+		cursor: pointer;
+		color: white;
+		font-size: 20px;
+	}
+}
+*/
+
+.modal-open
+{
+	display: none;
+	opacity: 1;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	margin: 0;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(255,255,255,0.9);
+}
+.modal-open > div
+{
+	margin: 5% auto;
+	display: block;
+	width: 80%;
+	height: 50%;
+	background: white;
+	border: 10px solid #15c7f0;
+	border-radius:10px;
+}
+#titulo-modal
+{
+	text-align: center;
+	font-size: 30px;
+}
+#contenido-modal
+{
+	display: block;
+	line-height: 1;
+	margin:10px; 
+	width: 100%;
+	height: 50%;
+	padding: 5px;
+	color: gray;
+	font-size:32px; 
+	text-align: center;
+	font-family: futura;
+}
+#resultado-modal
+{
+	margin: 20px auto;
+	display: block;
+	width: 100%;
+	position: relative;
+	bottom: 0px;
+	text-align: center;
+	z-index: 100000;
+	font-family: futura;
+	line-height: 5px;
+}
+@media only screen and (min-device-width : 300px) and (max-device-width : 1920px) and (orientation: landscape)
+{
+	#contenedor
+	{
+		width: 100%;
+		height: auto;
+		margin:0 auto;
+		overflow: hidden;
+	}
+	.form_center
+	{
+		margin-top: 200px;
+	}
+	#div_imagen
+	{
+		display: block;
+		width: 100%;
+		height: 120px;
+		text-align: center;
+		background: white;
+		overflow: hidden;
+	}
+	#div_imagen img
+	{
+		width: auto;
+		height: auto;
+	}
+	#div_contenedor
+	{
+		height: auto;
+		margin: auto;
+		margin-top:20px;
+		font-family: futura;
+		text-align: center;
+	}
+	.cardView
+	{
+		display: inline-block;
+		margin:10px; 
+		height: 200px;
+		width: 180px;
+		background: #ffffff;
+		border:1px solid white;
+		padding-bottom: 2px;
+		overflow: hidden;
+	}
+	.cardView-image
+	{
+		margin:2.5px 5px; 
+		height: 70px;
+		width: auto;
+		overflow: hidden;
+	}
+	.cardView-name
+	{
+		margin:2.5px 5px; 
+		height: 20px;
+		width: auto;
+		font-size:14px; 
+		color: black;
+		vertical-align: bottom;
+		font-weight: 800;
+		overflow: hidden;
+		text-align: left;
+	}
+	.cardView-description
+	{
+		margin: 5px; 
+		height: 60px;
+		width: auto;
+		color: gray;
+		overflow: hidden;
+		text-align: left;
+	}
+	.cardView-description p
+	{
+		font-size:13px; 
+		margin: 0;
+		line-height: 1;
+	}
+	.cardView-button
+	{
+		width: 100%;
+		height: 40px;
+		background-color: #ffffff;
+		position: relative;
+		text-align: center;
+		z-index: 10px;
+	}
+	#barra_menu
+	{
+		height: 70px;
+		width: 100%;
+		overflow: hidden;
+		background: white;
+		text-align: center;
+	}
+	#barra_menu img
+	{
+		float: left;
+		margin-top: 5px;
+		margin-left: 5px;
+		height: 80%;
+	}
+	#barra_menu_action
+	{
+		color: #0EC7F0;
+	}
+	#barra_opciones
+	{
+		height: 20px;
+		width: 100%;
+		overflow: hidden;
+		background: #AAAAAA;
+		text-align: right;
+	}
+	#barra_opciones a
+	{
+		color: #ffffff;
+		margin-right: 10px;
+		font-family: futura;
+	}
+	#barra_opciones a:hover
+	{
+		color: #000000;
+	}
+	#barra_contenedor
+	{
+		margin: 0px auto;
+		text-align: center;
+		height: auto;
+		padding: 5px 0px;
+		background: white;
+	}
+	input
+	{
+		position: relative;
+		display: block;
+		margin: 20px auto;
+		width: 500px;
+		color: black;
+		font-size: 20px;
+		border: none;
+		border-bottom: 1px solid black;
+		text-align: center;
+		outline: none;
+		font-family: futura;
+		height: auto;
+		background: none;
+	}
+	input:hover 
+	{
+		-webkit-animation: move 0.5s linear 0s 1 normal forwards;
+		-o-animation: move 0.5s linear 0s 1 normal forwards;
+		animation: move 0.5s linear 0s 1 normal forwards;
+	}
+	button
+	{
+		position: relative;
+		margin:0 auto;
+		border: none;
+		padding: 5px 20px;
+		width: 100px;
+		height: 30px;
+		background: #0EC7F0;
+		color: white;
+	}
+	button:hover 
+	{
+		background: #0786BA;
+		-webkit-animation: jump 0.5s linear 0s 1 normal forwards;
+		-o-animation: jump 0.5s linear 0s 1 normal forwards;
+		animation: jump 0.5s linear 0s 1 normal forwards;
+	}
+	.accept
+	{
+		background: #417F27;
+	}
+	.accept:hover
+	{
+		background: #214014;
+	}
+	.cancel
+	{ 
+		background: red;
+	}
+	#contenido_contenedor
+	{
+		margin: 0 auto;
+		width: 100%;
+		height: auto;
+		text-align: center;
+		padding: 10px 0px;
+	}
+	.element_edit,.element_delete
+	{
+		cursor: pointer;
+	}
+	.element_save
+	{
+		cursor: pointer;
+		visibility: hidden;
+	}
+	.inLine-horizontal
+	{
+		display: inline-block;
+		margin-left:20px; 
+		width: 150px;
+		font-size: 16px;
+	}
+}

@@ -1,0 +1,17 @@
+@keyframes jump 
+	{
+	    0%   {top: 0px;}
+	    25%  {top: 2px;}
+	    50%  {top: 4px;}
+	    75%  {top: 2px;}
+	    100%  {top: 0px;}
+	}
+
+@keyframes move 
+	{
+	    0%   {left: 0px;}
+	    25%  {left: 4px;}
+	    50%  {left: 8px;}
+	    75%  {left: 4px;}
+	    100%  {left: 0px;}
+	}	

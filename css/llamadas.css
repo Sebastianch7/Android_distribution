@@ -1,0 +1,10 @@
+//jump
+-webkit-animation: jump 0.5s linear 0s infinite normal forwards;
+-o-animation: jump 0.5s linear 0s infinite normal forwards;
+animation: jump 0.5s linear 0s infinite normal forwards;
+
+//move
+-webkit-animation: move 0.5s linear 0s infinite normal forwards;
+-o-animation: move 0.5s linear 0s infinite normal forwards;
+animation: move 0.5s linear 0s infinite normal forwards;
+
