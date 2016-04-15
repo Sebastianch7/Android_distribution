@@ -20,24 +20,26 @@ CREATE TABLE IF NOT EXISTS `aplication` (
   `appId` int(11) NOT NULL AUTO_INCREMENT,
   `appName` varchar(50) COLLATE ucs2_spanish_ci NOT NULL,
   `appDescription` varchar(50) COLLATE ucs2_spanish_ci NOT NULL,
-  `appImage` varchar(50) COLLATE ucs2_spanish_ci NOT NULL,
+  `appImage` text COLLATE ucs2_spanish_ci NOT NULL,
   `appRoute` varchar(50) COLLATE ucs2_spanish_ci NOT NULL,
-  `appLaboratory` int(11) NOT NULL,
+  `labId` int(11) NOT NULL,
   `typeId` int(11) NOT NULL,
   PRIMARY KEY (`appId`),
   UNIQUE KEY `appName` (`appName`),
   UNIQUE KEY `appRoute` (`appRoute`),
-  KEY `appLaboratory` (`appLaboratory`),
+  KEY `appLaboratory` (`labId`),
   KEY `appType` (`typeId`),
-  CONSTRAINT `appLaboratory` FOREIGN KEY (`appLaboratory`) REFERENCES `laboratory` (`labId`),
+  CONSTRAINT `appLaboratory` FOREIGN KEY (`labId`) REFERENCES `laboratory` (`labId`),
   CONSTRAINT `appType` FOREIGN KEY (`typeId`) REFERENCES `typeaplication` (`typeId`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=ucs2 COLLATE=ucs2_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=ucs2 COLLATE=ucs2_spanish_ci;
 
 -- Volcando datos para la tabla edibcac_distribucion_android.aplication: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `aplication` DISABLE KEYS */;
-INSERT INTO `aplication` (`appId`, `appName`, `appDescription`, `appImage`, `appRoute`, `appLaboratory`, `typeId`) VALUES
-	(7, 'calculadora tecnofarma', 'calculadora de tecnofarma mexico', 'images', 'apk/', 1, 1),
-	(8, 'calculadora sanofi', 'calculadora sanofi', 'images', 'apk/sanofi', 1, 1);
+INSERT INTO `aplication` (`appId`, `appName`, `appDescription`, `appImage`, `appRoute`, `labId`, `typeId`) VALUES
+	(7, 'calculadora tecnofarma', 'calculadora de tecnofarma mexico', 'eqeqwqeqa', 'calculadora_tecnofarma', 2, 1),
+	(8, 'calculadora sanofi', 'calculadora sanofi', 'images', 'calculadora_sanofi', 2, 1),
+	(49, 'aaaaa', 'aaaa', '../uploads/2.jpg', '../donwload/version (6).apk', 1, 1),
+	(50, 'efefe', 'feeeef', '../uploads/IMG_0056.JPG', '../donwload/Pssss_-debug.apk', 2, 2);
 /*!40000 ALTER TABLE `aplication` ENABLE KEYS */;
 
 
@@ -106,16 +108,18 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `userMail` (`userMail`),
   KEY `rollId` (`rollId`),
   CONSTRAINT `rollId` FOREIGN KEY (`rollId`) REFERENCES `roll` (`rolId`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=ucs2 COLLATE=ucs2_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=ucs2 COLLATE=ucs2_spanish_ci;
 
--- Volcando datos para la tabla edibcac_distribucion_android.user: ~4 rows (aproximadamente)
+-- Volcando datos para la tabla edibcac_distribucion_android.user: ~6 rows (aproximadamente)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`userId`, `userName`, `userMail`, `userPassword`, `userState`, `rollId`, `userDateCreate`) VALUES
-	(2, 'SebastianCH', 'sebass7@live.com', '1022399551SCH', b'1', 1, '2016/04/05'),
-	(66, '111', '111', '111', b'0', 1, '63.000000000000000000'),
+	(1, 'admin', 'admin', 'admin', b'0', 1, ''),
+	(2, 'Sebastian', 'sebass7@live.com', '1022399551SCH', b'1', 1, '2016/04/05'),
+	(66, '111', '111', '111', b'0', 2, '63.000000000000000000'),
 	(67, 'dsadas', 'sasss@ssss.com', '121212', b'0', 1, '2016/04/08'),
 	(68, 'asasasas', 'sassssss@ssss.com', '121212', b'1', 2, '2016/04/08'),
-	(69, 'asasasas', 'oiji,uju8', '121212', b'1', 2, '2016/04/08');
+	(69, 'asasasas', 'oiji,uju8', '121212', b'0', 2, '2016/04/08'),
+	(70, 'camilo', 'camilo@groups.com', '123456789', b'0', 2, '2016/04/15');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 
