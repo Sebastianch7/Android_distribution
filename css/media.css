@@ -28,7 +28,8 @@ html,body
 }
 table
 {
-	margin:10px auto; 
+	margin:10px auto;
+	width: 90%; 
 }
 th,tr
 {
@@ -595,6 +596,7 @@ th,tr
 	}
 	#contenido_contenedor
 	{
+		display: none;
 		margin: 0 auto;
 		width: 100%;
 		height: auto;
@@ -616,5 +618,17 @@ th,tr
 		margin-left:20px; 
 		width: 150px;
 		font-size: 16px;
+	}
+	.tbody
+	{
+		margin:0 auto; 
+		display: none;
+		width: 90%;
+	}
+	.iFile
+	{
+		background: #EEEEEE;
+		border: none;
+		width: 300px;
 	}
 }

@@ -22,24 +22,31 @@
 			<button class="btn_func" id="0003">Permisos</button>
 		</div>
 		<div id="barra_menu">
-		<h1 id="barra_menu_action"></h1>
+		<h1 id="bar_menu_action"></h1>
 		</div>
 		<div id="contenido_contenedor">
-		<table>
-			<thead id="data_thead">
+			<p id="result"></p>
+			<!--** Formulario para crear usuario **-->
+			<!--<div class="tbody" id="data_tbody_createUser">-->
+			<table id="table_form">
+				<tr><td>HOla</td></tr>
+			</table>
+			<div class="tbody" id="data_tbody_createPermission">
+				<input class="inLine-horizontal datas" type="text" id="newName" name="newName" placeholder="Nombre de Usuario" required></input>
+				<input class="inLine-horizontal datas" type="text" id="newMail" name="newMail" placeholder="Correo Electrónico" required></input>
+				<input class="inLine-horizontal datas" type="text" id="newPasword" name="newPasword" placeholder="Contraseña" required></input>
+				<select class="inLine-horizontal datas" type="text" id="newState" name="newState"><option value="0">Activo</option><option value="1">Inactivo</option></select>
+				<select class="inLine-horizontal datas" type="text" id="newRoll" name="newRoll"></select>
+				<button class="inLine-horizontal" type="submit" id="newPermission">Crear Permiso</button>
+			</div>
+			<table>
+				<thead id="data_thead">
+					
+				</thead>
+				<tbody id="data_tbody">
 				
-			</thead>
-			<tbody id="data_tbody_create">
-				<input class="inLine-horizontal" type="text" id="newName" name="newName" placeholder="Nombre de Usuario" required></input>
-				<input class="inLine-horizontal" type="email" id="newMail" name="newMail" placeholder="Correo Electrónico" required></input>
-				<input class="inLine-horizontal" type="text" id="newPasword" name="newPasword" placeholder="Contraseña" required></input>
-				<select class="inLine-horizontal" type="text" id="newState" name="newState"><option value="0">Activo</option><option value="1">Inactivo</option></select>
-				<select class="inLine-horizontal" type="text" id="newRoll" name="newRoll"></select>
-				<button class="inLine-horizontal" type="submit" id="newUsuario">Crear Usuario</button>
-			</tbody>
-			<tbody id="data_tbody">
-			
-			</tbody>
+				</tbody>
+			</table>	
 		</div>
 	</div>
 </body>
