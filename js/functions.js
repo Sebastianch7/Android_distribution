@@ -2,6 +2,8 @@ var datos_insert;
 var roles_usuario;
 var tipo_app;
 var laboratorio;
+var usuarios;
+var aplicaciones;
 
 $(document).ready(function()
 {
@@ -9,6 +11,8 @@ $(document).ready(function()
 	cargarRolesUsuario();
 	cargarTipoAplicacion();
 	cargarLaboratorio();
+	cargarUsuario();
+	cargarAplicacion();
 
 	setTimeout(function(){
 		lectorUrl();		
@@ -39,6 +43,20 @@ $(document).ready(function()
 		{
 			alert('Error');
 		}
+	});
+
+	$( "#newPermission" ).click(function() {
+		alert('hola');
+		/*
+		if(valida_input_permission())
+		{
+		  crear_nuevo_permission();
+		}
+		else
+		{
+			alert('Error');
+		}
+		*/
 	});
 
 });
@@ -72,6 +90,10 @@ $(document).ready(function()
 				result = 'Tipo de imagen o aplicativo erroneo.';
 				$('#0001').click();
 			break;
+			case 'permission':
+			break;
+			default:
+				result = '';
 		}
 
 		$('#result').text(result);
@@ -116,6 +138,32 @@ $(document).ready(function()
 		});
 	}
 
+	function cargarUsuario()
+	{
+		$.ajax({
+		  method: "POST",
+		  dataType: 'json',
+		  url: "Services/ServicesSelectAll.php"
+		})
+		.done(function( data ) 
+		{
+			pintaDatosUsuarios(data);
+		});
+	}
+
+	function cargarAplicacion()
+	{
+		$.ajax({
+		  method: "POST",
+		  dataType: 'json',
+		  url: "Services/ServicesSelectAllApp.php"
+		})
+		.done(function( data ) 
+		{
+			pintaDatosAplicaciones(data);
+		});
+	}
+
 function pintaDatosRolesUsuario(data)
 {
 	roles_usuario = data;
@@ -143,6 +191,24 @@ function pintaDatosLaboratorio(data)
 	}
 }
 
+function pintaDatosUsuarios(data)
+{
+	usuarios = data;
+	for(i=0;i<usuarios.length;i++)
+	{
+		$('#newUser').append('<option value="'+data[i].userId+'">'+data[i].userName+'</option>');
+	}
+}
+
+function pintaDatosAplicaciones(data)
+{
+	aplicaciones = data;
+	for(i=0;i<aplicaciones.length;i++)
+	{
+		$('#newAplication').append('<option value="'+data[i].appId+'">'+data[i].appName+'</option>');
+	}
+}
+
 function sistemaOperativo()
 {
 	var OSName="Unknown OS";
@@ -157,11 +223,6 @@ function sistemaOperativo()
 		$('#modal').css('display','block');
 		$('#contenido-modal').html('Lo sentimos, <br> Su dispositivo no es compatible.');
 	}
-}
-
-function cerrar_modal()
-{
-	$('#modal').css('display','none');
 }
 
 function validacionUsuarioLogin()
@@ -214,7 +275,6 @@ function masterFunciones(func)
 	switch (func)
 	{
 		case 1:
-		$('#data_tbody_createApp').css('display','block').css('margin','0 auto');
 		$.ajax({
 		  method: "POST",
 		  dataType: 'json',
@@ -228,7 +288,6 @@ function masterFunciones(func)
 		break;
 		
 		case 2:
-		$('#data_tbody_createUser').css('display','block');
 		$.ajax({
 		  method: "POST",
 		  dataType: 'json',
@@ -237,14 +296,21 @@ function masterFunciones(func)
 		.done(function( data ) 
 		{
 			pintaDatosUsuario(data);
-			pintaDatosFormulario(2)
+			pintaDatosFormulario(2);
 		});
 		break;
 
 		case 3:
-		$('#data_tbody_createPermission').css('display','block');
-		$('#bar_menu_action').text('Gestor de Permisos');
-		break;
+		$.ajax({
+		  method: "POST",
+		  dataType: 'json',
+		  url: "Services/ServicesSelectPermissionAll.php"
+		})
+		.done(function( data ) 
+		{
+			pintaDatosPermiso(data);
+			pintaDatosFormulario(3);
+		});
 	}
 }
 
@@ -254,14 +320,24 @@ function pintaDatosFormulario(action)
 	{
 		//caso aplicacion
 		case 1:
-			formulario = '<form action="Services/ServicesInsertApp.php" method="post" enctype="multipart/form-data"><input class="inLine-horizontal datas" type="text" id="newNameApp" name="newNameApp" placeholder="Nombre" required></input><input class="inLine-horizontal datas" type="text" id="newDescription" name="newDescription" placeholder="Descripción" required></input><input class="inLine-horizontal datas iFile" type="file" id="newImage" name="newImage" placeholder="Imagen" required></input><input class="inLine-horizontal datas iFile" type="file" id="newApk" name="newApk" placeholder="apk" required></input><select class="inLine-horizontal datas" id="newLaboratory" name="newLaboratory"></select><select class="inLine-horizontal datas" id="newType" name="newType"></select><button class="inLine-horizontal" type="submit" id="newApps">Crear App</button></form>';
+			formulario = '<tr><td>Nombre</td><td>Descripción</td><td>Imagen App</td><td>Archivo Apk</td><td>Laboratorio</td><td>Tipo de Aplicación</td><td></td></tr><tr><td><form action="Services/ServicesInsertApp.php" method="post" enctype="multipart/form-data"><input class="inLine-horizontal datas" type="text" id="newNameApp" name="newNameApp" placeholder="Nombre" required></input></td><td><input class="inLine-horizontal datas" type="text" id="newDescription" name="newDescription" placeholder="Descripción" required></input></td><td><input class="inLine-horizontal datas iFile" type="file" id="newImage" name="newImage" placeholder="Imagen" required></input></td><td><input class="inLine-horizontal datas iFile" type="file" id="newApk" name="newApk" placeholder="apk" required></input></td><td><select class="inLine-horizontal datas" id="newLaboratory" name="newLaboratory"></select></td><td><select class="inLine-horizontal datas" id="newType" name="newType"></select></td><td><button class="inLine-horizontal" type="submit" id="newApps">Crear App</button></form></td>';
+			cargarTipoAplicacion();
+			cargarLaboratorio();
 		break;
 		//caso usuario
 		case 2:
 			formulario = '<tr><td>Nombre</td><td>Correo Electrónico</td><td>Contraseña</td><td>Estado</td><td>Roll</td><td></td></tr><tr><td><input class="inLine-horizontal datas" type="text" id="newName" name="newName" placeholder="Nombre de Usuario" required></input></td><td><input class="inLine-horizontal datas" type="email" id="newMail" name="newMail" placeholder="Correo Electrónico" required></input></td><td><input class="inLine-horizontal datas" type="text" id="newPasword" name="newPasword" placeholder="Contraseña" required></input></td><td><select class="inLine-horizontal datas" type="text" id="newState" name="newState"><option value="0">Activo</option><option value="1">Inactivo</option></select></td><td><select class="inLine-horizontal datas" type="text" id="newRoll" name="newRoll"></select></td><td><button class="inLine-horizontal" type="submit" id="newUsuario">Crear Usuario</button></td></tr>';
+			cargarRolesUsuario();
 		break;
-		$('#table_form').text('ffff');
+		//caso permiso
+		case 3:
+			formulario = '<tr><td>Usuario</td><td>Aplicación</td><td>Fecha Inicial</td><td>Fecha Final</td></tr><tr><td><select class="inLine-horizontal datas" id="newUser" name="newUser"></select></td><td><select class="inLine-horizontal datas" id="newAplication" name="newAplication"></select></td><td><input type="date" id="dateInitial" name="dateInitial"></input></td><td><input type="date" id="dateFinish" name="dateFinish"></input></td><td><button class="inLine-horizontal" type="submit" id="newPermission">Crear Permiso</button></td></tr>';
+			cargarUsuario();
+			cargarAplicacion();
+		break;
 	}
+
+	$('#table_form').html(formulario);
 }
 function pintaDatosUsuario(data)
 {
@@ -431,6 +507,60 @@ function crear_nuevo_app()
 	});
 }
 
+function crear_nuevo_app()
+{
+	$.ajax({
+	  method: "POST",
+	  dataType: 'json',
+	  url: "Services/ServicesInsertPermission.php",
+	  data: { name: datos_insert[0], aplication : datos_insert[1], initial: datos_insert[2], finish: datos_insert[3]}
+	})
+	.done(function( data ) 
+	{
+		limpia_datos();
+		masterFunciones(3);
+	});
+}
+
+function pintaDatosPermiso(data)
+{
+	$('#bar_menu_action').text('Gestor de Permisos');
+	table_head = '<tr>';
+	table_head +='<th>Nombre</th>';
+	table_head +='<th>Aplicación</th>';
+	table_head +='<th>Fecha Inicial</th>';
+	table_head +='<th>Fecha Final</th>';
+	table_head +='<th>Estado</th></tr>';
+	$('#data_thead').html(table_head);
+	table_body = '';
+
+
+	for(i=0;i<data.length;i++)
+	{
+		//table_body += '<tr><td><p id="name'+data[i].userName+'">'+data[i].userName+'</p></td>';
+		table_body += '<tr id="row'+data[i].UAid+'"><td><p class="classN'+data[i].UAid+'" id="name'+data[i].UAid+'">'+data[i].userName+'</p></td>';
+		table_body += '<td><p class="classN'+data[i].UAid+'" id="aplication'+data[i].UAid+'">'+data[i].appName+'</p></td>';
+		table_body += '<td><p class="classN'+data[i].UAid+'" id="initial'+data[i].UAid+'">'+data[i].UAdateCreate+'</p></td>';
+		table_body += '<td><p class="class'+data[i].UAid+'" id="finish'+data[i].UAid+'">'+data[i].UAdateFinish+'</p></td>';
+		if(data[i].UAstate == 0)
+		{
+			table_body += '<td><select class="iSelect'+data[i].UAid+' class'+data[i].UAid+'" id="state'+data[i].UAid+'" disabled><option value="0">Activo</value><option value="1">Inactivo</value></select></td>';
+		}
+		else
+		{
+			table_body += '<td><select class="iSelect'+data[i].UAid+' class'+data[i].UAid+'" id="state'+data[i].UAid+'" disabled><option value="1">Inactivo</value><option value="0">Activo</value></select></td>';	
+		}
+		table_body += '<td class="element_edit" data-value="'+data[i].UAid+'" id="edit'+data[i].UAid+'" data-action="3"><img src="images/img_edit.png"></td>';
+		table_body += '<td class="element_save" data-value="'+data[i].UAid+'" id="save'+data[i].UAid+'" data-action="3"><img src="images/img_save.png"></td></tr>';
+	}
+
+	$('#data_tbody').html(table_body);
+
+	ElementoEditar();
+	ElementoGuardar();
+	animacionContenidoContenedor();
+}
+
 function guardarRegistroEditado(func,action)
 {
 	switch(parseInt(action))
@@ -462,7 +592,7 @@ function guardarRegistroEditado(func,action)
 			name = $('#name'+func).text();
 			description = $('#description'+func).text();
 			image = $('#image'+func).text();
-			route = name.replace(/ /g, "_");
+			route = $('#route'+func).text();
 			laboratory = $('#laboratory'+func).val();
 			type = $('#type'+func).val();
 			$.ajax({
@@ -477,6 +607,24 @@ function guardarRegistroEditado(func,action)
 				$('#edit'+func).css('visibility','visible');
 				$('#save'+func).css('visibility','hidden');
 			});
+		break;
+		case 3:
+			id = func;
+			finish = $('#finish'+func).text();
+			state = $('#state'+func).val();
+			$.ajax({
+			  method: "POST",
+			  dataType: 'json',
+			  url: "Services/ServicesEditPermission.php",
+			  data: {id:id, finish: finish, state : state}
+			})
+			.done(function( data ) 
+			{
+				$('.class'+func).attr('contentEditable','false').css('border-bottom','none').css('outline','none');
+				$('#edit'+func).css('visibility','visible');
+				$('#save'+func).css('visibility','hidden');
+			});
+			
 		break;
 	}
 
@@ -505,6 +653,26 @@ function valida_input_app()
 	return validate;
 }
 
+function valida_input_permission()
+{
+	name = $('#newUser').val();
+	aplication = $('#newAplication').val();
+	initial = $('#dateInitial').text();
+	finish = $('#dateFinish').text();
+
+	var validate = true;
+	datos_insert = [name,aplication,initial,finish];
+
+	for(i=0;i<datos_insert.length;i++)
+	{
+		if(datos_insert[i].length == 0 || datos_insert[i] == '')
+		{
+			validate = false;
+		}
+	}
+
+	return validate;
+}
 //FUNCIONES REUTILIZABLES
 function ElementoEditar()
 {
